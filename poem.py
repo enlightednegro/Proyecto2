@@ -11,7 +11,7 @@ if opt == "1":
     txt = "vogon.txt"
     poemlen = 30
 else:
-    txt = "poemdb1.txt"
+    txt = "poemdb.txt"
     poemlen = 80
 
 with open(txt) as file:
