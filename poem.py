@@ -3,16 +3,19 @@
 import random
 
 
-opt = input("""Escoge entre:
+opt = str(input("""Escoge entre:
       1. Vogon
-      Otro. Humano
-      Opcion: """)
+      2. Humano
+      Otro. Salir
+      Opcion: """))
 if opt == "1":
     txt = "vogon.txt"
     poemlen = 30
-else:
+elif opt == "2":
     txt = "poemdb.txt"
     poemlen = 80
+else:
+    exit()
 
 with open(txt) as file:
     poemdb = file.read()
@@ -36,6 +39,8 @@ word1 = random.choice(list(chain.keys()))
 poem = word1.capitalize()
 
 while poemlen > len(poem.split(' ')):
+    while word1 not in chain or not chain[word1]:
+        word1 = random.choice(list(chain.keys()))
     word2 = random.choice(list(chain[word1]))
     word1 = word2
     poem += ' ' + word2
